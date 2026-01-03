@@ -1,0 +1,55 @@
+# Node modules
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Environment variables
+.env
+.env.local
+.env.*.local
+*.env
+
+# Cloudflare
+.wrangler/
+dist/
+worker/
+
+# Logs
+logs/
+*.log
+
+# OS
+.DS_Store
+Thumbs.db
+*.swp
+*.swo
+*~
+
+# IDE
+.vscode/
+.idea/
+*.sublime-project
+*.sublime-workspace
+
+# Temporary files
+*.tmp
+*.temp
+.cache/
+
+# Secrets and tokens
+secrets/
+tokens/
+*.pem
+*.key
+credentials.json
+tiktok_tokens*.json
+tiktok_tokens*.txt
+
+# Build outputs
+build/
+out/
+
+# Test coverage
+coverage/
+.nyc_output/

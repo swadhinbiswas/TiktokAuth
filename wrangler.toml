@@ -1,0 +1,28 @@
+name = "tiktok-oauth"
+main = "worker.js"
+compatibility_date = "2024-01-01"
+
+# Uncomment and configure after deployment
+# routes = [
+#   { pattern = "bot.boringrats.dev/*", zone_name = "boringrats.dev" }
+# ]
+
+# Environment variables
+# Set these securely via Cloudflare Dashboard or wrangler CLI
+# DO NOT put actual values here - use secrets!
+#
+# Via CLI:
+#   wrangler secret put TIKTOK_CLIENT_KEY
+#   wrangler secret put TIKTOK_CLIENT_SECRET
+#
+# [vars]
+# TIKTOK_CLIENT_KEY = "set_via_cli_or_dashboard"
+# TIKTOK_CLIENT_SECRET = "set_via_cli_or_dashboard"
+
+# Optional: KV namespace for token storage
+# Uncomment after creating KV namespace:
+#   wrangler kv:namespace create "TIKTOK_TOKENS"
+#
+# [[kv_namespaces]]
+# binding = "TIKTOK_TOKENS"
+# id = "your_kv_namespace_id_here"
