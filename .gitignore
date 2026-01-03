@@ -25,7 +25,7 @@ Thumbs.db
 *.swp
 *.swo
 *~
-
+.wrangler
 # IDE
 .vscode/
 .idea/
