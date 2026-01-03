@@ -264,10 +264,10 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 
 ## 👨‍💻 Author
 
-**Your Name**
+**SwadhinBiswas**
 
-- GitHub: [@your-username](https://github.com/your-username)
-- Website: [your-website.com](https://your-website.com)
+- GitHub: [@swadhinbiswas](https://github.com/swadhinbiswas)
+- Website: [swadhinbiswas.com](https://swadhin.my.id)
 
 ## 🙏 Acknowledgments
 
@@ -290,5 +290,4 @@ Clean token display with copy and download functionality.
 User-friendly error pages with helpful troubleshooting tips.
 
 ---
-
-<p align="center">Made with ❤️ for the TikTok Developer Community</p>
+**Happy Coding! 🚀**
