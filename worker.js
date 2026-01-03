@@ -93,142 +93,169 @@ function handleLandingPage(env) {
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>TikTok OAuth Portal</title>
+  <title>TikTok OAuth - Authorization Portal</title>
   <link rel="stylesheet" href="/styles.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 <body>
+  <div class="particles" id="particles"></div>
+
   <nav class="navbar">
-    <div class="nav-container">
+    <div class="container">
       <div class="nav-brand">
         <i class="fab fa-tiktok"></i>
         <span>TikTok OAuth Portal</span>
       </div>
-      <a href="https://github.com" target="_blank" class="nav-link">
-        <i class="fab fa-github"></i>
-        <span>GitHub</span>
-      </a>
+      <div class="nav-links">
+        <a href="https://github.com/your-username/tiktok-oauth-worker" target="_blank">
+          <i class="fab fa-github"></i> GitHub
+        </a>
+      </div>
     </div>
   </nav>
 
-  <main class="main-content">
-    <div class="hero-section">
-      <div class="hero-badge">
-        <i class="fas fa-shield-check"></i>
-        <span>Secure OAuth 2.0</span>
+  <main class="container">
+    <div class="hero">
+      <div class="hero-icon">
+        <i class="fas fa-shield-alt"></i>
       </div>
-      <h1 class="hero-title">Secure TikTok OAuth<br/><span class="highlight">Authorization</span></h1>
-      <p class="hero-description">Connect your TikTok account safely and securely. Get access tokens for video uploads and content management.</p>
-
-      <a href="${authUrl}" class="cta-button">
-        <span class="cta-icon"><i class="fab fa-tiktok"></i></span>
-        <span class="cta-text">Authorize with TikTok</span>
-        <span class="cta-arrow"><i class="fas fa-arrow-right"></i></span>
-      </a>
-
-      <p class="cta-note">
-        <i class="fas fa-info-circle"></i>
-        You'll be redirected to TikTok to grant permissions
+      <h1 class="hero-title">
+        Secure TikTok OAuth
+        <span class="gradient-text">Authorization</span>
+      </h1>
+      <p class="hero-subtitle">
+        Connect your TikTok account safely and securely through our OAuth 2.0 implementation
       </p>
     </div>
 
-    <div class="features-grid">
-      <div class="feature-card">
-        <div class="feature-icon">
-          <i class="fas fa-lock"></i>
-        </div>
-        <h3>Secure</h3>
-        <p>OAuth 2.0 standard security</p>
+    <div class="card main-card">
+      <div class="card-header">
+        <h2><i class="fas fa-rocket"></i> Get Started</h2>
+        <p>Authorize your TikTok account to enable video uploads and more</p>
       </div>
-      <div class="feature-card">
-        <div class="feature-icon">
-          <i class="fas fa-bolt"></i>
+
+      <div class="features">
+        <div class="feature">
+          <div class="feature-icon">
+            <i class="fas fa-lock"></i>
+          </div>
+          <h3>Secure</h3>
+          <p>OAuth 2.0 standard security</p>
         </div>
-        <h3>Fast</h3>
-        <p>Instant authorization</p>
+        <div class="feature">
+          <div class="feature-icon">
+            <i class="fas fa-bolt"></i>
+          </div>
+          <h3>Fast</h3>
+          <p>Instant authorization</p>
+        </div>
+        <div class="feature">
+          <div class="feature-icon">
+            <i class="fas fa-check-circle"></i>
+          </div>
+          <h3>Reliable</h3>
+          <p>99.9% uptime on Cloudflare</p>
+        </div>
       </div>
-      <div class="feature-card">
-        <div class="feature-icon">
-          <i class="fas fa-check-circle"></i>
-        </div>
-        <h3>Reliable</h3>
-        <p>99.9% uptime</p>
+
+      <div class="auth-section">
+        <a href="${authUrl}" class="btn btn-primary">
+          <i class="fab fa-tiktok"></i>
+          <span>Authorize with TikTok</span>
+          <i class="fas fa-arrow-right"></i>
+        </a>
+        <p class="auth-note">
+          <i class="fas fa-info-circle"></i>
+          You'll be redirected to TikTok to grant permissions
+        </p>
       </div>
     </div>
 
-    <div class="content-grid">
-      <div class="info-card">
-        <div class="card-icon">
+    <div class="info-grid">
+      <div class="card info-card">
+        <div class="info-header">
           <i class="fas fa-cog"></i>
+          <h3>Configuration</h3>
         </div>
-        <h3>Configuration</h3>
-        <div class="info-items">
-          <div class="info-item">
-            <span class="label">Redirect URI</span>
-            <code class="value">${CONFIG.redirectUri}</code>
-          </div>
-          <div class="info-item">
-            <span class="label">Scopes</span>
-            <code class="value">${CONFIG.scopes}</code>
-          </div>
-          <div class="info-item">
-            <span class="label">Response Type</span>
-            <code class="value">code</code>
-          </div>
-        </div>
+        <ul class="info-list">
+          <li><strong>Redirect URI:</strong> <code>${CONFIG.redirectUri}</code></li>
+          <li><strong>Scopes:</strong> <code>${CONFIG.scopes}</code></li>
+          <li><strong>Response Type:</strong> <code>code</code></li>
+        </ul>
       </div>
 
-      <div class="info-card">
-        <div class="card-icon">
+      <div class="card info-card">
+        <div class="info-header">
           <i class="fas fa-key"></i>
+          <h3>What You'll Get</h3>
         </div>
-        <h3>What You'll Get</h3>
-        <ul class="check-list">
-          <li><i class="fas fa-check"></i>Access Token</li>
-          <li><i class="fas fa-check"></i>Refresh Token</li>
-          <li><i class="fas fa-check"></i>User Open ID</li>
-          <li><i class="fas fa-check"></i>Token Expiration Info</li>
+        <ul class="info-list">
+          <li><i class="fas fa-check"></i> Access Token</li>
+          <li><i class="fas fa-check"></i> Refresh Token</li>
+          <li><i class="fas fa-check"></i> User Open ID</li>
+          <li><i class="fas fa-check"></i> Token Expiration Info</li>
         </ul>
       </div>
     </div>
 
-    <div class="api-section">
-      <div class="section-header">
-        <i class="fas fa-code"></i>
-        <h3>API Endpoints</h3>
+    <div class="card api-docs">
+      <h3><i class="fas fa-code"></i> API Endpoints</h3>
+      <div class="endpoint">
+        <span class="method get">GET</span>
+        <code>/</code>
+        <span class="desc">Landing page</span>
       </div>
-      <div class="endpoints-list">
-        <div class="endpoint-item">
-          <span class="method get">GET</span>
-          <code>/</code>
-          <span class="endpoint-desc">Landing page</span>
-        </div>
-        <div class="endpoint-item">
-          <span class="method get">GET</span>
-          <code>/callback</code>
-          <span class="endpoint-desc">OAuth callback</span>
-        </div>
-        <div class="endpoint-item">
-          <span class="method get">GET</span>
-          <code>/tokens</code>
-          <span class="endpoint-desc">Get stored tokens</span>
-        </div>
-        <div class="endpoint-item">
-          <span class="method post">POST</span>
-          <code>/refresh</code>
-          <span class="endpoint-desc">Refresh access token</span>
-        </div>
+      <div class="endpoint">
+        <span class="method get">GET</span>
+        <code>/callback</code>
+        <span class="desc">OAuth callback</span>
+      </div>
+      <div class="endpoint">
+        <span class="method get">GET</span>
+        <code>/tokens</code>
+        <span class="desc">Get stored tokens</span>
+      </div>
+      <div class="endpoint">
+        <span class="method post">POST</span>
+        <code>/refresh</code>
+        <span class="desc">Refresh access token</span>
       </div>
     </div>
   </main>
 
   <footer class="footer">
-    <p>
-      Built with <i class="fas fa-heart"></i> using Cloudflare Workers
-      <span class="separator">•</span>
-      <a href="https://developers.tiktok.com" target="_blank">TikTok Developer Docs</a>
-    </p>
+    <div class="container">
+      <p>
+        <i class="fas fa-heart"></i> Built with Cloudflare Workers
+        <span class="separator">•</span>
+        <a href="https://developers.tiktok.com" target="_blank">TikTok Developer Docs</a>
+      </p>
+    </div>
   </footer>
+
+  <script>
+    // Particle animation
+    function createParticle() {
+      const particle = document.createElement('div');
+      particle.className = 'particle';
+      particle.style.left = Math.random() * 100 + '%';
+      particle.style.animationDuration = (Math.random() * 3 + 2) + 's';
+      particle.style.animationDelay = Math.random() * 2 + 's';
+      document.getElementById('particles').appendChild(particle);
+
+      setTimeout(() => particle.remove(), 5000);
+    }
+
+    setInterval(createParticle, 300);
+
+    // Add entrance animations
+    document.addEventListener('DOMContentLoaded', () => {
+      const cards = document.querySelectorAll('.card');
+      cards.forEach((card, index) => {
+        card.style.animationDelay = (index * 0.1) + 's';
+      });
+    });
+  </script>
 </body>
 </html>
   `;
@@ -776,69 +803,92 @@ function handleStyles() {
 }
 
 :root {
-  --accent: #0066FF;
-  --gray-50: #fafafa;
-  --gray-100: #f5f5f5;
-  --gray-200: #e5e5e5;
-  --gray-300: #d4d4d4;
-  --gray-400: #a3a3a3;
-  --gray-500: #737373;
-  --gray-600: #525252;
-  --gray-700: #404040;
-  --gray-800: #262626;
-  --gray-900: #171717;
-  --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
-  --shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px -1px rgba(0, 0, 0, 0.1);
-  --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -2px rgba(0, 0, 0, 0.1);
-  --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -4px rgba(0, 0, 0, 0.1);
-  --shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 8px 10px -6px rgba(0, 0, 0, 0.1);
-  --radius: 12px;
-  --radius-lg: 16px;
+  --primary: #fe2c55;
+  --primary-dark: #d91f43;
+  --secondary: #25f4ee;
+  --dark: #0f0f0f;
+  --dark-light: #1a1a1a;
+  --gray: #6c757d;
+  --gray-light: #f8f9fa;
+  --success: #28a745;
+  --danger: #dc3545;
+  --warning: #ffc107;
+  --gradient: linear-gradient(135deg, #fe2c55 0%, #d91f43 100%);
+  --gradient-secondary: linear-gradient(135deg, #25f4ee 0%, #00d4ff 100%);
+  --shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
+  --shadow-lg: 0 20px 60px rgba(0, 0, 0, 0.15);
 }
 
 body {
-  font-family: -apple-system, BlinkMacSystemFont, 'Inter', 'Segoe UI', Roboto, sans-serif;
-  background: var(--gray-50);
-  color: var(--gray-900);
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: #333;
   line-height: 1.6;
   min-height: 100vh;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+  position: relative;
+  overflow-x: hidden;
+}
+
+/* Particles background */
+.particles {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 0;
+  pointer-events: none;
+}
+
+.particle {
+  position: absolute;
+  bottom: -10px;
+  width: 10px;
+  height: 10px;
+  background: rgba(255, 255, 255, 0.5);
+  border-radius: 50%;
+  animation: float 5s infinite ease-in-out;
+}
+
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0) translateX(0);
+    opacity: 0;
+  }
+  10% {
+    opacity: 1;
+  }
+  90% {
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(-100vh) translateX(100px);
+    opacity: 0;
+  }
 }
 
 /* Navbar */
 .navbar {
-  background: rgba(255, 255, 255, 0.8);
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
-  border-bottom: 1px solid var(--gray-200);
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(10px);
   padding: 1rem 0;
+  box-shadow: var(--shadow);
   position: sticky;
   top: 0;
   z-index: 100;
 }
 
-.nav-container {
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 0 2rem;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
-
 .nav-brand {
   display: flex;
   align-items: center;
-  gap: 0.75rem;
-  font-size: 1.125rem;
+  gap: 0.5rem;
+  font-size: 1.5rem;
   font-weight: 700;
-  color: var(--gray-900);
-  letter-spacing: -0.025em;
+  color: var(--primary);
 }
 
 .nav-brand i {
-  font-size: 1.5rem;
+  font-size: 2rem;
 }
 
 .nav-links {
@@ -846,410 +896,361 @@ body {
   gap: 1.5rem;
 }
 
-.nav-link {
+.nav-links a {
+  color: var(--gray);
+  text-decoration: none;
   display: flex;
   align-items: center;
   gap: 0.5rem;
-  color: var(--gray-600);
-  text-decoration: none;
-  font-size: 0.95rem;
-  font-weight: 500;
-  transition: color 0.2s;
-  padding: 0.5rem 1rem;
-  border-radius: 8px;
+  transition: color 0.3s;
 }
 
-.nav-link:hover {
-  color: var(--gray-900);
-  background: var(--gray-100);
+.nav-links a:hover {
+  color: var(--primary);
 }
 
-/* Main Content */
-.main-content {
+/* Container */
+.container {
   max-width: 1200px;
   margin: 0 auto;
-  padding: 4rem 2rem;
-}
-
-/* Hero Section */
-.hero-section {
-  text-align: center;
-  max-width: 720px;
-  margin: 0 auto 5rem;
-}
-
-.hero-badge {
-  display: inline-flex;
+  padding: 0 1.5rem;
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  justify-content: space-between;
   align-items: center;
-  gap: 0.5rem;
-  padding: 0.5rem 1rem;
-  background: var(--gray-900);
-  color: white;
-  border-radius: 50px;
-  font-size: 0.875rem;
-  font-weight: 600;
-  margin-bottom: 2rem;
 }
 
-.hero-badge i {
-  font-size: 1rem;
+.navbar .container {
+  flex-direction: row;
+}
+
+/* Hero */
+.hero {
+  text-align: center;
+  padding: 4rem 0 2rem;
+  animation: fadeInUp 0.8s ease-out;
+}
+
+.hero-icon {
+  font-size: 5rem;
+  color: white;
+  margin-bottom: 1rem;
+  animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+  0%, 100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.1);
+  }
 }
 
 .hero-title {
-  font-size: 3.75rem;
+  font-size: 3.5rem;
   font-weight: 800;
-  color: var(--gray-900);
-  margin-bottom: 1.5rem;
-  line-height: 1.1;
-  letter-spacing: -0.04em;
+  color: white;
+  margin-bottom: 1rem;
+  line-height: 1.2;
 }
 
-.highlight {
-  background: linear-gradient(135deg, var(--accent) 0%, #0052cc 100%);
+.gradient-text {
+  background: var(--gradient-secondary);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
 }
 
-.hero-description {
+.hero-subtitle {
   font-size: 1.25rem;
-  color: var(--gray-600);
-  margin-bottom: 2.5rem;
-  line-height: 1.6;
+  color: rgba(255, 255, 255, 0.9);
   max-width: 600px;
-  margin-left: auto;
-  margin-right: auto;
+  margin: 0 auto;
 }
 
-/* CTA Button */
-.cta-button {
-  display: inline-flex;
-  align-items: center;
-  gap: 1rem;
-  padding: 1.25rem 2.5rem;
-  background: var(--gray-900);
-  color: white;
-  text-decoration: none;
-  border-radius: var(--radius-lg);
-  font-size: 1.125rem;
-  font-weight: 600;
-  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+/* Cards */
+.card {
+  background: white;
+  border-radius: 20px;
+  padding: 2rem;
+  box-shadow: var(--shadow);
+  animation: fadeInUp 0.8s ease-out;
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.card:hover {
+  transform: translateY(-5px);
   box-shadow: var(--shadow-lg);
-  position: relative;
-  overflow: hidden;
 }
 
-.cta-button::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background: linear-gradient(135deg, transparent 0%, rgba(255,255,255,0.1) 100%);
-  opacity: 0;
-  transition: opacity 0.3s;
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
-.cta-button:hover {
-  transform: translateY(-2px);
-  box-shadow: var(--shadow-xl);
+.main-card {
+  width: 100%;
+  max-width: 800px;
 }
 
-.cta-button:hover::before {
-  opacity: 1;
+.card-header {
+  text-align: center;
+  margin-bottom: 2rem;
 }
 
-.cta-button:active {
-  transform: translateY(0);
-}
-
-.cta-icon {
-  font-size: 1.5rem;
-}
-
-.cta-arrow {
-  font-size: 1rem;
-  transition: transform 0.3s;
-}
-
-.cta-button:hover .cta-arrow {
-  transform: translateX(4px);
-}
-
-.cta-note {
+.card-header h2 {
+  font-size: 2rem;
+  color: var(--dark);
+  margin-bottom: 0.5rem;
   display: flex;
   align-items: center;
   justify-content: center;
   gap: 0.5rem;
-  margin-top: 1.5rem;
-  color: var(--gray-500);
-  font-size: 0.9rem;
 }
 
-/* Features Grid */
-.features-grid {
+.card-header p {
+  color: var(--gray);
+}
+
+/* Features */
+.features {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-  gap: 1.5rem;
-  margin-bottom: 4rem;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 2rem;
+  margin: 2rem 0;
 }
 
-.feature-card {
-  background: white;
-  padding: 2rem;
-  border-radius: var(--radius);
-  border: 1px solid var(--gray-200);
+.feature {
   text-align: center;
-  transition: all 0.3s;
-}
-
-.feature-card:hover {
-  border-color: var(--gray-900);
-  box-shadow: var(--shadow-md);
-  transform: translateY(-2px);
 }
 
 .feature-icon {
-  width: 60px;
-  height: 60px;
-  background: var(--gray-900);
+  width: 80px;
+  height: 80px;
+  background: var(--gradient);
+  border-radius: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 1rem;
+  font-size: 2rem;
   color: white;
-  border-radius: var(--radius);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 1.5rem;
-  margin: 0 auto 1.25rem;
+  box-shadow: 0 10px 30px rgba(254, 44, 85, 0.3);
 }
 
-.feature-card h3 {
-  font-size: 1.125rem;
-  font-weight: 700;
-  color: var(--gray-900);
+.feature h3 {
+  font-size: 1.25rem;
   margin-bottom: 0.5rem;
-  letter-spacing: -0.02em;
+  color: var(--dark);
 }
 
-.feature-card p {
-  color: var(--gray-600);
-  font-size: 0.95rem;
+.feature p {
+  color: var(--gray);
 }
 
-/* Content Grid */
-.content-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-  gap: 1.5rem;
-  margin-bottom: 3rem;
+/* Buttons */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 1rem 2rem;
+  border: none;
+  border-radius: 50px;
+  font-size: 1.1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s;
+  text-decoration: none;
+  justify-content: center;
 }
 
-.info-card {
+.btn-primary {
+  background: var(--gradient);
+  color: white;
+  box-shadow: 0 10px 30px rgba(254, 44, 85, 0.4);
+}
+
+.btn-primary:hover {
+  box-shadow: 0 15px 40px rgba(254, 44, 85, 0.5);
+  transform: translateY(-2px);
+}
+
+.btn-secondary {
   background: white;
-  padding: 2rem;
-  border-radius: var(--radius);
-  border: 1px solid var(--gray-200);
+  color: var(--gray);
+  border: 2px solid #e0e0e0;
 }
 
-.card-icon {
-  width: 48px;
-  height: 48px;
-  background: var(--gray-100);
-  color: var(--gray-900);
-  border-radius: 10px;
+.btn-secondary:hover {
+  border-color: var(--primary);
+  color: var(--primary);
+}
+
+.btn-small {
+  padding: 0.5rem 1rem;
+  font-size: 0.9rem;
+}
+
+/* Auth section */
+.auth-section {
+  text-align: center;
+  padding: 2rem 0;
+}
+
+.auth-note {
+  margin-top: 1rem;
+  color: var(--gray);
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 1.25rem;
-  margin-bottom: 1.25rem;
-}
-
-.info-card h3 {
-  font-size: 1.25rem;
-  font-weight: 700;
-  color: var(--gray-900);
-  margin-bottom: 1.5rem;
-  letter-spacing: -0.02em;
-}
-
-.info-items {
-  display: flex;
-  flex-direction: column;
-  gap: 1rem;
-}
-
-.info-item {
-  display: flex;
-  flex-direction: column;
   gap: 0.5rem;
 }
 
-.info-item .label {
-  font-size: 0.875rem;
-  font-weight: 600;
-  color: var(--gray-600);
-  text-transform: uppercase;
-  letter-spacing: 0.05em;
+/* Info grid */
+.info-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 2rem;
+  width: 100%;
+  max-width: 1200px;
 }
 
-.info-item .value {
-  background: var(--gray-100);
-  padding: 0.75rem 1rem;
-  border-radius: 8px;
-  font-family: 'SF Mono', 'Monaco', 'Inconsolata', 'Courier New', monospace;
-  font-size: 0.875rem;
-  color: var(--gray-900);
-  word-break: break-all;
+.info-card {
+  padding: 1.5rem;
 }
 
-.check-list {
+.info-header {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  margin-bottom: 1rem;
+  color: var(--primary);
+  font-size: 1.5rem;
+}
+
+.info-header h3 {
+  font-size: 1.25rem;
+  color: var(--dark);
+}
+
+.info-list {
   list-style: none;
-  display: flex;
-  flex-direction: column;
-  gap: 0.75rem;
+  padding: 0;
 }
 
-.check-list li {
-  display: flex;
-  align-items: center;
-  gap: 0.75rem;
-  color: var(--gray-700);
-  font-size: 0.95rem;
-}
-
-.check-list i {
-  color: var(--gray-900);
-  font-size: 1.125rem;
-}
-
-/* API Section */
-.api-section {
-  background: white;
-  padding: 2rem;
-  border-radius: var(--radius);
-  border: 1px solid var(--gray-200);
-}
-
-.section-header {
+.info-list li {
+  padding: 0.75rem 0;
+  border-bottom: 1px solid #f0f0f0;
   display: flex;
   align-items: center;
-  gap: 0.75rem;
+  gap: 0.5rem;
+}
+
+.info-list li:last-child {
+  border-bottom: none;
+}
+
+.info-list code {
+  background: #f8f9fa;
+  padding: 0.25rem 0.5rem;
+  border-radius: 5px;
+  font-size: 0.9rem;
+  color: var(--primary);
+}
+
+.info-list i {
+  color: var(--success);
+}
+
+/* API Docs */
+.api-docs {
+  width: 100%;
+  max-width: 800px;
+}
+
+.api-docs h3 {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
   margin-bottom: 1.5rem;
+  color: var(--dark);
 }
 
-.section-header i {
-  font-size: 1.25rem;
-  color: var(--gray-900);
-}
-
-.section-header h3 {
-  font-size: 1.25rem;
-  font-weight: 700;
-  color: var(--gray-900);
-  letter-spacing: -0.02em;
-}
-
-.endpoints-list {
-  display: flex;
-  flex-direction: column;
-  gap: 0.75rem;
-}
-
-.endpoint-item {
+.endpoint {
   display: flex;
   align-items: center;
   gap: 1rem;
   padding: 1rem;
-  background: var(--gray-50);
-  border-radius: 8px;
-  border: 1px solid var(--gray-200);
-  transition: all 0.2s;
-}
-
-.endpoint-item:hover {
-  background: var(--gray-100);
-  border-color: var(--gray-300);
+  background: #f8f9fa;
+  border-radius: 10px;
+  margin-bottom: 0.75rem;
 }
 
 .method {
-  padding: 0.375rem 0.75rem;
-  border-radius: 6px;
-  font-weight: 700;
-  font-size: 0.75rem;
-  text-transform: uppercase;
-  letter-spacing: 0.05em;
-  min-width: 55px;
+  padding: 0.25rem 0.75rem;
+  border-radius: 5px;
+  font-weight: 600;
+  font-size: 0.85rem;
+  min-width: 60px;
   text-align: center;
 }
 
 .method.get {
-  background: var(--gray-900);
-  color: white;
+  background: #d4edda;
+  color: #155724;
 }
 
 .method.post {
-  background: var(--gray-600);
-  color: white;
+  background: #d1ecf1;
+  color: #0c5460;
 }
 
-.endpoint-item code {
+.endpoint code {
   flex: 1;
-  font-family: 'SF Mono', 'Monaco', 'Inconsolata', 'Courier New', monospace;
   font-weight: 600;
-  color: var(--gray-900);
+  color: var(--dark);
+}
+
+.endpoint .desc {
+  color: var(--gray);
   font-size: 0.9rem;
 }
 
-.endpoint-desc {
-  color: var(--gray-500);
-  font-size: 0.9rem;
-}
-
-/* Container */
-.container {
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  padding: 2rem;
-}
-
-/* Cards for success/error pages */
-.card {
-  background: white;
-  border-radius: var(--radius);
-  padding: 2rem;
-  border: 1px solid var(--gray-200);
-  box-shadow: var(--shadow);
-  width: 100%;
-}
-
-.main-card {
-  max-width: 800px;
-}
-
-/* Success/Error hero */
+/* Success/Error pages */
 .success-hero, .error-hero {
   text-align: center;
   padding: 3rem 0 2rem;
 }
 
 .success-icon {
-  font-size: 5rem;
-  color: var(--gray-900);
+  font-size: 6rem;
+  color: var(--success);
   animation: scaleIn 0.5s ease-out;
 }
 
 .error-icon {
-  font-size: 5rem;
-  color: var(--gray-900);
+  font-size: 6rem;
+  color: var(--danger);
   animation: shake 0.5s ease-out;
 }
 
 @keyframes scaleIn {
-  from { transform: scale(0); }
-  to { transform: scale(1); }
+  from {
+    transform: scale(0);
+  }
+  to {
+    transform: scale(1);
+  }
 }
 
 @keyframes shake {
@@ -1259,16 +1260,14 @@ body {
 }
 
 .success-hero h1, .error-hero h1 {
-  font-size: 2.25rem;
-  color: var(--gray-900);
+  font-size: 2.5rem;
+  color: white;
   margin: 1rem 0 0.5rem;
-  font-weight: 700;
-  letter-spacing: -0.02em;
 }
 
 .success-hero p, .error-hero p {
-  color: var(--gray-600);
-  font-size: 1rem;
+  color: rgba(255, 255, 255, 0.9);
+  font-size: 1.1rem;
 }
 
 /* Token display */
@@ -1278,20 +1277,18 @@ body {
 }
 
 .token-display {
-  background: var(--gray-50);
-  border: 1px solid var(--gray-200);
-  border-radius: 8px;
+  background: #f8f9fa;
+  border: 2px solid #e0e0e0;
+  border-radius: 10px;
   padding: 1.5rem;
   word-break: break-all;
-  margin: 1rem 0;
 }
 
 .token-display code {
-  font-family: 'SF Mono', 'Monaco', 'Inconsolata', 'Roboto Mono', monospace;
-  font-size: 0.875rem;
-  color: var(--gray-900);
-  line-height: 1.7;
-  letter-spacing: 0.02em;
+  font-family: 'Courier New', monospace;
+  font-size: 0.9rem;
+  color: var(--dark);
+  line-height: 1.8;
 }
 
 /* Stats */
@@ -1303,20 +1300,21 @@ body {
 }
 
 .stat-icon {
-  width: 56px;
-  height: 56px;
-  background: var(--gray-900);
-  border-radius: 10px;
+  width: 60px;
+  height: 60px;
+  background: var(--gradient);
+  border-radius: 15px;
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 1.5rem;
+  font-size: 1.75rem;
   color: white;
+  flex-shrink: 0;
 }
 
 .stat-content h3 {
   font-size: 0.9rem;
-  color: var(--gray-600);
+  color: var(--gray);
   margin-bottom: 0.25rem;
   font-weight: 500;
 }
@@ -1324,38 +1322,34 @@ body {
 .stat-content p {
   font-size: 1.1rem;
   font-weight: 600;
-  color: var(--gray-900);
+  color: var(--dark);
 }
 
 /* Warning card */
 .warning-card {
-  background: var(--gray-50);
-  padding: 1.5rem;
-  border-radius: 8px;
-  border: 1px solid var(--gray-200);
+  background: #fff3cd;
+  border: 2px solid #ffc107;
   display: flex;
   gap: 1rem;
   align-items: start;
   width: 100%;
   max-width: 800px;
-  margin: 1rem 0;
 }
 
 .warning-card i {
-  font-size: 1.5rem;
-  color: var(--gray-900);
+  font-size: 2rem;
+  color: #856404;
   flex-shrink: 0;
 }
 
 .warning-card h3 {
-  color: var(--gray-900);
+  color: #856404;
   margin-bottom: 0.5rem;
-  font-weight: 600;
 }
 
 .warning-card ul {
   margin-left: 1.5rem;
-  color: var(--gray-600);
+  color: #856404;
 }
 
 .warning-card li {
@@ -1366,28 +1360,26 @@ body {
 .error-card {
   width: 100%;
   max-width: 800px;
+  border: 2px solid var(--danger);
 }
 
 .error-card h2 {
-  color: var(--gray-900);
+  color: var(--danger);
   margin-bottom: 1rem;
   display: flex;
   align-items: center;
   gap: 0.5rem;
-  font-weight: 600;
 }
 
 .error-content {
-  background: var(--gray-50);
+  background: #f8f9fa;
   padding: 1.5rem;
-  border-radius: 8px;
-  border: 1px solid var(--gray-200);
+  border-radius: 10px;
 }
 
 .error-content p {
   margin: 0.5rem 0;
   line-height: 1.8;
-  color: var(--gray-700);
 }
 
 /* Action buttons */
@@ -1399,55 +1391,19 @@ body {
   padding: 1rem 0;
 }
 
-.btn {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.75rem;
-  padding: 0.875rem 1.5rem;
-  border-radius: var(--radius);
-  font-size: 1rem;
-  font-weight: 600;
-  cursor: pointer;
-  transition: all 0.2s;
-  text-decoration: none;
-  border: none;
-}
-
-.btn-primary {
-  background: var(--gray-900);
-  color: white;
-}
-
-.btn-primary:hover {
-  background: var(--gray-800);
-  transform: translateY(-1px);
-  box-shadow: var(--shadow-md);
-}
-
-.btn-secondary {
-  background: white;
-  color: var(--gray-900);
-  border: 1px solid var(--gray-300);
-}
-
-.btn-secondary:hover {
-  border-color: var(--gray-900);
-  background: var(--gray-50);
-}
-
-/* Toast */
+/* Toast notification */
 .toast {
   position: fixed;
   bottom: 2rem;
   right: 2rem;
-  background: var(--gray-900);
+  background: var(--dark);
   color: white;
   padding: 1rem 1.5rem;
-  border-radius: 8px;
+  border-radius: 50px;
   display: flex;
   align-items: center;
   gap: 0.75rem;
-  box-shadow: var(--shadow-xl);
+  box-shadow: var(--shadow-lg);
   transform: translateY(150%);
   transition: transform 0.3s;
   z-index: 1000;
@@ -1457,25 +1413,31 @@ body {
   transform: translateY(0);
 }
 
+.toast.success {
+  background: var(--success);
+}
+
+.toast.error {
+  background: var(--danger);
+}
+
 .toast i {
   font-size: 1.25rem;
 }
 
 /* Footer */
 .footer {
-  background: white;
-  border-top: 1px solid var(--gray-200);
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(10px);
   padding: 2rem 0;
   margin-top: 4rem;
   text-align: center;
-  color: var(--gray-600);
-  font-size: 0.9rem;
+  color: var(--gray);
 }
 
 .footer a {
-  color: var(--gray-900);
+  color: var(--primary);
   text-decoration: none;
-  font-weight: 500;
 }
 
 .footer a:hover {
@@ -1484,7 +1446,7 @@ body {
 
 .separator {
   margin: 0 0.5rem;
-  color: var(--gray-400);
+  color: #ddd;
 }
 
 /* Responsive */
@@ -1493,25 +1455,20 @@ body {
     font-size: 2.5rem;
   }
 
-  .features-grid {
+  .features {
     grid-template-columns: 1fr;
   }
 
-  .content-grid {
+  .info-grid {
     grid-template-columns: 1fr;
   }
 
-  .nav-container {
+  .navbar .container {
     flex-direction: column;
     gap: 1rem;
   }
 
-  .nav-links {
-    width: 100%;
-    justify-content: center;
-  }
-
-  .endpoint-item {
+  .endpoint {
     flex-direction: column;
     align-items: flex-start;
     gap: 0.5rem;
@@ -1521,10 +1478,6 @@ body {
     bottom: 1rem;
     right: 1rem;
     left: 1rem;
-  }
-
-  .main-content {
-    padding: 2rem 1rem;
   }
 }
 
@@ -1536,12 +1489,12 @@ body {
 
 .not-found h1 {
   font-size: 8rem;
-  color: var(--gray-900);
+  color: white;
   margin: 0;
 }
 
 .not-found h2 {
-  color: var(--gray-600);
+  color: rgba(255, 255, 255, 0.9);
   margin: 1rem 0;
 }
   `;
